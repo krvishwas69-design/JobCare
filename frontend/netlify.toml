@@ -1,0 +1,9 @@
+# Only needed if you host the frontend separately from the Django server (see DEPLOY.md, option B).
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#00875a">
+  <meta name="description" content="Job Care - Hire candidates, post jobs, and manage recruitment.">
+  <title>Job Care | Hire Candidates</title>
+  
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div id="app-container">
+
+  <!-- =====================================================================
+       TOP NAVIGATION BAR
+       ===================================================================== -->
+  <header class="top-navbar">
+    <div class="top-navbar-left">
+      <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Sidebar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="logo-brand">
+        Job<span class="brand-suffix">Care</span>
+      </div>
+
+      <a class="portal-switch-pill" id="btn-toggle-seeker" href="jobs.html" title="Browse public Job Care listings">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+        <span>Employer Mode</span>
+      </a>
+    </div>
+
+    <div class="top-navbar-right">
+      <!-- Available Credits Pill Button -->
+      <button class="credits-pill-btn" id="btn-available-credits">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <line x1="2" y1="10" x2="22" y2="10"></line>
+        </svg>
+        <span>Available credits</span>
+      </button>
+
+      <!-- Recruiter Avatar Circle -->
+      <button class="user-avatar-btn" id="btn-user-avatar" title="Recruiter Profile">
+        <span id="top-user-avatar">V</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN WORKSPACE (SIDEBAR + CONTENT)
+       ===================================================================== -->
+  <div class="workspace-container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <!-- Top Profile Item (Displays logged-in recruiter) -->
+        <div class="sidebar-user-box" id="sidebar-user-box" title="Click to change profile">
+          <div class="sidebar-user-avatar" id="sidebar-user-avatar">V</div>
+          <span class="sidebar-user-name" id="sidebar-user-name">Vishwas KR</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="nav-menu">
+          <!-- Jobs (Active) -->
+          <button class="nav-item active" data-nav="jobs">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span class="nav-text">Jobs</span>
+          </button>
+
+          <button class="nav-item" data-nav="applicants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="4"></circle>
+              <path d="M3 21v-2a6 6 0 0 1 12 0v2M19 8v6M22 11h-6"></path>
+            </svg>
+            <span class="nav-text">Applicants</span>
+          </button>
+
+          <!-- Database -->
+          <button class="nav-item" data-nav="database">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <path d="M11 8v6M8 11h6"></path>
+            </svg>
+            <span class="nav-text">Database</span>
+          </button>
+
+          <!-- Reports -->
+          <button class="nav-item" data-nav="reports">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            <span class="nav-text">Reports</span>
+          </button>
+
+          <!-- Credits & Usage -->
+          <button class="nav-item" data-nav="credits">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+              <line x1="1" y1="10" x2="23" y2="10"></line>
+            </svg>
+            <span class="nav-text">Credits &amp; Usage</span>
+          </button>
+
+          <!-- Billing -->
+          <button class="nav-item" data-nav="billing">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span class="nav-text">Billing</span>
+            <span class="badge-pill badge-new">New</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Bottom Nav Items & View Plans -->
+      <div class="sidebar-footer">
+        <button class="nav-item" data-act="help">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+          </svg>
+          <span class="nav-text">Help &amp; Support</span>
+        </button>
+
+        <button class="nav-item" data-act="sales">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span class="nav-text">Contact Sales</span>
+          <span class="badge-pill badge-offers">Offers</span>
+        </button>
+
+        <!-- View plans Pill Button -->
+        <button class="view-plans-btn" id="btn-view-plans" data-act="view-plans">
+          <div class="gold-coin-icon">₹</div>
+          <span class="view-plans-text">View plans</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT VIEW -->
+    <main class="main-content">
+
+      <!-- =================================================================
+           TAB 1: JOBS VIEW (Matches Screenshot)
+           ================================================================= -->
+      <section class="view-panel active" id="view-jobs">
+
+        <!-- FESTIVE BANNER: Job Care Hiring Utsav -->
+        <div class="festive-banner-wrapper" id="festive-banner-box">
+          <div class="festive-banner">
+            <button class="banner-dismiss-btn" id="btn-dismiss-banner" title="Dismiss banner">✕</button>
+
+            <!-- Left Hero Section of Banner -->
+            <div class="banner-hero-section">
+              <div class="banner-badge-arch">
+                <span class="badge-brand-sub">— Job Care —</span>
+                <span class="badge-festive-title">Hiring Utsav</span>
+              </div>
+              <h2 class="banner-hero-heading">
+                Save up to 37%<br>on annual hiring plans.
+              </h2>
+              <p class="banner-hero-sub">Saal bhar hiring, Festive wali savings.</p>
+              
+              <div class="banner-diya-container">
+                <div class="diya-flame"></div>
+                <div class="diya-lamp"></div>
+              </div>
+            </div>
+
+            <!-- Offer Card 1: 22 JOB CREDITS -->
+            <div class="banner-offer-card">
+              <div>
+                <div class="offer-card-top-title">22 JOB CREDITS</div>
+                <div class="offer-card-subtitle"></div>
+                <div class="offer-price-row">
+                  <span class="offer-main-price">₹9,999</span>
+                  <span class="offer-original-price">₹15,378</span>
+                  <span class="offer-discount-badge">35% OFF</span>
+                </div>
+                <div class="offer-monthly-rate">Just ₹833/month <span>| Multiple-city hiring</span></div>
+              </div>
+              <button class="offer-cta-btn" data-act="buy-credits">
+                Buy job credits →
+              </button>
+            </div>
+
+            <!-- Offer Card 2: UNLIMITED JOB POSTINGS -->
+            <div class="banner-offer-card">
+              <div>
+                <div class="offer-card-top-title">UNLIMITED JOB POSTINGS · 1 Year plan</div>
+                <div class="offer-card-subtitle">1 active job slot · 1,000 database credits</div>
+                <div class="offer-price-row">
+                  <span class="offer-main-price">₹9,999</span>
+                  <span class="offer-original-price">₹15,999</span>
+                  <span class="offer-discount-badge">37% OFF</span>
+                </div>
+                <div class="offer-monthly-rate">Just ₹833/month <span>| Single-city hiring</span></div>
+              </div>
+              <button class="offer-cta-btn" data-act="buy-unlimited">
+                Get Unlimited →
+              </button>
+            </div>
+
+            <div class="banner-terms-notice">*T&amp;C APPLY</div>
+          </div>
+        </div>
+
+        <!-- SECTION HEADER (All Jobs (1)) -->
+        <div class="content-section-header">
+          <div class="section-title-wrap">
+            <h1 class="section-title" id="jobs-count-heading">All Jobs (1)</h1>
+          </div>
+
+          <div class="section-actions">
+            <button class="btn-post-job" id="btn-post-job">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Post a new job</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px; margin-left: -2px;">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter tabs & Search Toolbar -->
+        <div class="jobs-toolbar">
+          <div class="filter-tabs">
+            <button class="filter-tab-btn active" data-filter="all">All Jobs</button>
+            <button class="filter-tab-btn" data-filter="draft">Drafts / Incomplete</button>
+            <button class="filter-tab-btn" data-filter="active">Active</button>
+            <button class="filter-tab-btn" data-filter="closed">Closed</button>
+          </div>
+
+          <div class="search-jobs-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="jobs-search-input" placeholder="Search by job title or location...">
+          </div>
+        </div>
+
+        <!-- JOB CARDS LIST -->
+        <div class="jobs-list" id="jobs-container">
+          <!-- Dynamically populated or rendered -->
+        </div>
+
+      </section>
+
+      <section class="view-panel" id="view-applicants">
+        <div class="content-section-header">
+          <div>
+            <h1 class="section-title">Applicants</h1>
+            <p style="color:#6b7280; margin-top:4px;">Applications for your active job postings.</p>
+          </div>
+          <button class="btn-outline" id="btn-refresh-applicants" type="button">Refresh</button>
+        </div>
+        <div class="table-card">
+          <div class="table-scroll">
+            <table class="invoice-table">
+              <thead><tr><th>Candidate</th><th>Job</th><th>Phone</th><th>Applied</th><th>Status</th></tr></thead>
+              <tbody id="applications-body"></tbody>
+            </table>
+          </div>
+          <p class="empty-note" id="applications-empty" hidden>No applications yet. Share an active job with candidates to get started.</p>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 2: DATABASE VIEW
+           ================================================================= -->
+      <section class="view-panel" id="view-database">
+        <div class="content-section-header">
+          <h1 class="section-title">Candidate Database</h1>
+          <div class="section-actions">
+            <div class="search-jobs-box" style="min-width: 320px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="candidate-search-input" placeholder="Search by skill, city (e.g. Driver Bengaluru)...">
+            </div>
+          </div>
+        </div>
+        <div class="candidate-grid" id="candidates-container">
+          <!-- Populated from candidate database -->
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 3: REPORTS VIEW
+           ================================================================= -->
+      <section class="view-panel" id="view-reports">
+        <div class="content-section-header"><h1 class="section-title">Hiring Analytics &amp; Reports</h1></div>
+        <div class="analytics-metric-grid">
+          <div class="metric-card"><div class="metric-label">Active Jobs</div><div class="metric-number" id="rep-active">0</div></div>
+          <div class="metric-card"><div class="metric-label">Applications Received</div><div class="metric-number" id="rep-apps">0</div></div>
+          <div class="metric-card"><div class="metric-label">Candidates Contacted</div><div class="metric-number" id="rep-contacted">0</div></div>
+          <div class="metric-card"><div class="metric-label">Hired Successfully</div><div class="metric-number" id="rep-hired">0</div></div>
+        </div>
+        <div class="funnel-container">
+          <h3 style="margin-bottom: 14px; font-size: 16px;">Candidate Funnel</h3>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div><div class="funnel-row"><span>Applied</span><b id="fun-applied-txt">0</b></div><div class="funnel-track"><div class="funnel-bar" id="fun-applied" style="background:#00875a"></div></div></div>
+            <div><div class="funnel-row"><span>Shortlisted / Interviewed</span><b id="fun-short-txt">0</b></div><div class="funnel-track"><div class="funnel-bar" id="fun-short" style="background:#f59e0b"></div></div></div>
+            <div><div class="funnel-row"><span>Hired</span><b id="fun-hired-txt">0</b></div><div class="funnel-track"><div class="funnel-bar" id="fun-hired" style="background:#2563eb"></div></div></div>
+          </div>
+          <p class="funnel-note" id="rep-jobs-note"></p>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 4: CREDITS & USAGE VIEW
+           ================================================================= -->
+      <section class="view-panel" id="view-credits">
+        <div class="content-section-header">
+          <h1 class="section-title">Credits &amp; Usage</h1>
+          <button class="btn-primary" data-act="buy-credits">+ Buy More Credits</button>
+        </div>
+        <div class="analytics-metric-grid" style="grid-template-columns: repeat(2, 1fr);">
+          <div class="metric-card">
+            <div class="metric-label">Job Posting Credits</div>
+            <div class="metric-number"><span id="cred-job">0</span> <span class="metric-unit">Available</span></div>
+            <div class="metric-note" id="cred-job-note"></div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Candidate Database Credits</div>
+            <div class="metric-number"><span id="cred-db">0</span> <span class="metric-unit">Remaining</span></div>
+            <div class="metric-note" style="color:#6b7280;">1 credit reveals one candidate's phone number</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           TAB 5: BILLING VIEW
+           ================================================================= -->
+      <section class="view-panel" id="view-billing">
+        <div class="content-section-header"><h1 class="section-title">Billing &amp; Invoices</h1></div>
+        <div class="table-card">
+          <h3 style="font-size:15px; margin-bottom: 12px;">Recent Invoices</h3>
+          <div class="table-scroll">
+            <table class="invoice-table">
+              <thead><tr><th>Invoice #</th><th>Date</th><th>Plan</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead>
+              <tbody id="invoices-body"></tbody>
+            </table>
+          </div>
+          <p class="empty-note" id="invoices-empty" hidden>No invoices yet. Buy a plan to see it here.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =====================================================================
+       FLOATING CHAT WIDGET (Bottom Right)
+       ===================================================================== -->
+  <div class="floating-chat-widget">
+    <div class="chat-popup-window" id="chat-popup">
+      <div class="chat-popup-header">
+        <div class="chat-popup-title">Job Care Support Assistant</div>
+        <button id="btn-close-chat" style="color:#ffffff; font-size:16px;">✕</button>
+      </div>
+      <div class="chat-popup-body" id="chat-messages">
+        <div class="chat-bubble">
+          Hello! How can I assist with your job posting or candidates today?
+        </div>
+      </div>
+      <div class="chat-popup-footer">
+        <input type="text" id="chat-input" placeholder="Type a message...">
+        <button id="btn-send-chat">Send</button>
+      </div>
+    </div>
+
+    <button class="floating-chat-btn" id="btn-floating-chat" aria-label="Support Chat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       POPOVERS: Available Credits & User Profile
+       ===================================================================== -->
+  <!-- Credits Popover -->
+  <div class="credits-popover" id="credits-popover">
+    <div class="credits-popover-title">Credit Balance Overview</div>
+    <div class="credit-item-row">
+      <span>Job Credits</span>
+      <span class="credit-item-val" id="pop-job-credits">0 credits</span>
+    </div>
+    <div class="credit-item-row">
+      <span>Database Credits</span>
+      <span class="credit-item-val" id="pop-db-credits">15 credits</span>
+    </div>
+    <div class="credit-item-row">
+      <span>Active Job Slots</span>
+      <span class="credit-item-val" id="pop-slots">1 slot</span>
+    </div>
+    <button class="recharge-btn" data-act="buy-credits">Recharge Credits</button>
+  </div>
+
+  <!-- User Menu Popover -->
+  <div class="user-menu-popover" id="user-menu-popover">
+    <div class="user-menu-header">
+      <div class="user-menu-name" id="menu-user-name">Vishwas KR</div>
+      <div class="user-menu-role" id="menu-user-role">Recruiter Admin</div>
+    </div>
+    <button class="user-menu-item" id="menu-edit-profile">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      Switch / Edit Recruiter
+    </button>
+    <button class="user-menu-item" id="menu-account-settings">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      Organization Settings
+    </button>
+    <button class="user-menu-item" id="menu-logout" style="color:#dc2626;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+      Log Out
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 0: EMPLOYER LOGIN / SIGN IN
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-login">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header" style="border-bottom:none; padding-bottom: 0;">
+        <div class="logo-brand" style="font-size: 24px;">Job<span class="brand-suffix">Care</span></div>
+      </div>
+      <div class="modal-body" style="padding-top: 8px;">
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" data-auth-mode="login">Sign in</button>
+          <button type="button" class="auth-tab" data-auth-mode="register">Create account</button>
+        </div>
+        <p style="font-size: 13.5px; color: #6b7280; margin: 12px 0 16px;" id="auth-subtitle">
+          Sign in to manage your job postings, candidate database, and hiring credits.
+        </p>
+        <form id="form-login" class="mode-login" novalidate>
+          <div class="form-group auth-register-only" style="margin-bottom: 14px;">
+            <label class="form-label" for="login-name">Your Full Name *</label>
+            <input class="form-input" id="login-name" placeholder="e.g. Vishwas KR" autocomplete="name">
+          </div>
+          <div class="form-group auth-register-only" style="margin-bottom: 14px;">
+            <label class="form-label" for="login-company">Company / Organization</label>
+            <input class="form-input" id="login-company" placeholder="e.g. JobCare Solutions" autocomplete="organization">
+          </div>
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label class="form-label" for="login-phone">Mobile Number or Work Email *</label>
+            <input class="form-input" id="login-phone" placeholder="e.g. 9876543210 or hr@company.com" autocomplete="username">
+          </div>
+          <div class="form-group" style="margin-bottom: 6px;">
+            <label class="form-label" for="login-password">Password *</label>
+            <input class="form-input" id="login-password" type="password" placeholder="At least 8 characters" autocomplete="current-password">
+          </div>
+          <div class="auth-error" id="auth-error" role="alert"></div>
+          <button class="btn-primary" id="btn-submit-login" type="submit" style="width: 100%; padding: 11px; font-size: 14.5px; border-radius: 8px; margin-top: 10px;">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile modal -->
+  <div class="modal-backdrop" id="modal-profile">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Recruiter &amp; Organization</h3>
+        <button class="modal-close-btn" data-close-modal="modal-profile">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group"><label class="form-label" for="prof-name">Full name</label><input class="form-input" id="prof-name"></div>
+        <div class="form-group"><label class="form-label" for="prof-company">Company</label><input class="form-input" id="prof-company"></div>
+        <div class="form-group"><label class="form-label" for="prof-phone">Contact number</label><input class="form-input" id="prof-phone"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="modal-profile">Cancel</button>
+        <button class="btn-primary" id="btn-save-profile">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 1: POST A NEW JOB
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-post-job">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Post a New Job Opening</h3>
+        <button class="modal-close-btn" data-close-modal="modal-post-job">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label class="form-label" for="inp-job-title">Job Title *</label>
+          <input class="form-input" id="inp-job-title" placeholder="e.g. Telecaller - Sales, Bike Delivery Partner" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inp-job-category">Department / Category</label>
+            <select class="form-select" id="inp-job-category">
+              <option value="Telecaller">Telecaller &amp; BPO</option>
+              <option value="Delivery">Delivery &amp; Logistics</option>
+              <option value="Sales">Field Sales &amp; Business</option>
+              <option value="Driver">Driver &amp; Transport</option>
+              <option value="Warehouse">Warehouse &amp; Operations</option>
+              <option value="Retail">Retail &amp; Store Counter</option>
+              <option value="General">Other / General</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-job-type">Job Type</label>
+            <select class="form-select" id="inp-job-type">
+              <option value="Full Time">Full Time</option>
+              <option value="Part Time">Part Time</option>
+              <option value="Contract">Contractual</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inp-job-location">City &amp; Location *</label>
+            <input class="form-input" id="inp-job-location" value="Bengaluru/Bangalore" placeholder="e.g. Bengaluru/Bangalore" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-job-openings">No. of Openings</label>
+            <input class="form-input" id="inp-job-openings" type="number" value="5" min="1">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="inp-min-salary">Min Monthly Pay (₹)</label>
+            <input class="form-input" id="inp-min-salary" type="number" value="18000">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="inp-max-salary">Max Monthly Pay (₹)</label>
+            <input class="form-input" id="inp-max-salary" type="number" value="28000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inp-job-desc">Job Description &amp; Candidate Requirements</label>
+          <textarea class="form-textarea" id="inp-job-desc" rows="3" placeholder="Explain candidate responsibilities, eligibility, and language skills..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="modal-post-job">Cancel</button>
+        <button class="btn-primary" id="btn-submit-post-job">Create Job</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 2: FINISH POSTING / SELECT PLAN
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-select-plan">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Select Plan to Activate Job</h3>
+        <button class="modal-close-btn" data-close-modal="modal-select-plan">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13.5px; color:#4b5563;">
+          Choose a hiring plan to finish posting <strong id="plan-modal-job-title">Sdfghj</strong> and begin receiving qualified applicant calls.
+        </p>
+
+        <div class="plan-choice-card selected" data-plan="credit">
+          <div>
+            <div class="plan-choice-title">Use 1 Job Credit</div>
+            <div class="plan-choice-desc">Standard job posting · Manage applicants from your dashboard</div>
+          </div>
+          <div class="plan-choice-price">1 Credit</div>
+        </div>
+
+        <div class="plan-choice-card" data-plan="unlimited">
+          <div>
+            <div class="plan-choice-title">Hiring Utsav Unlimited Plan</div>
+            <div class="plan-choice-desc">Annual unlimited postings + 1,000 DB credits</div>
+          </div>
+          <div class="plan-choice-price">₹9,999/yr</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="modal-select-plan">Cancel</button>
+        <button class="btn-primary" id="btn-confirm-plan">Activate Job Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 3: VIEW PLANS & PRICING
+       ===================================================================== -->
+  <div class="modal-backdrop" id="modal-view-plans">
+    <div class="modal-dialog" style="max-width: 680px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Job Care Annual Hiring Plans</h3>
+        <button class="modal-close-btn" data-close-modal="modal-view-plans">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="background: linear-gradient(135deg, #240b44 0%, #3a156e 100%); color:#ffffff; padding:16px 20px; border-radius:10px; margin-bottom:12px;">
+          <span style="background:#fbbf24; color:#1e1b4b; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:4px;">FESTIVE SPECIAL</span>
+          <h2 style="font-size:18px; margin: 6px 0 2px;">Save up to 37% on Hiring Credits</h2>
+          <p style="font-size:12.5px; color:#e9d5ff;">Find active job openings and manage applications in one place.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+          <div style="border:2px solid #e2e8f0; border-radius:10px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; color:#00875a; text-transform:uppercase;">Job Credits Pack</div>
+            <div style="font-size:24px; font-weight:800; margin: 4px 0;">₹9,999 <span style="font-size:13px; text-decoration:line-through; color:#94a3b8;">₹15,378</span></div>
+            <p style="font-size:12px; color:#475569; margin-bottom:12px;">22 job posting credits.</p>
+            <button class="btn-primary" style="width:100%;" data-buy="credits">Buy 22 Credits</button>
+          </div>
+
+          <div style="border:2px solid #00875a; background:#f0fdf4; border-radius:10px; padding:16px;">
+            <div style="font-size:12px; font-weight:700; color:#00875a; text-transform:uppercase;">Unlimited Hiring</div>
+            <div style="font-size:24px; font-weight:800; margin: 4px 0;">₹9,999 <span style="font-size:13px; text-decoration:line-through; color:#94a3b8;">₹15,999</span></div>
+            <p style="font-size:12px; color:#475569; margin-bottom:12px;">Unlimited Job Postings + 1,000 DB candidate credits.</p>
+            <button class="btn-primary" style="width:100%;" data-buy="unlimited">Get Unlimited</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="modal-view-plans">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Sales -->
+  <div class="modal-backdrop" id="modal-contact-sales">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-contact-sales-title">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-contact-sales-title">Contact Sales</h3>
+        <button class="modal-close-btn" data-close-modal="modal-contact-sales" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-body">
+        <a class="btn-primary" id="sales-email-link"></a>
+        <a class="btn-secondary" id="sales-phone-link"></a>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-close-modal="modal-contact-sales">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast-notice" id="toast-notice">Notice message</div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/employer.js"></script>
+</body>
+</html>

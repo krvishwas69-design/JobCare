@@ -1,0 +1,7 @@
+{
+  "name": "jobcare-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JobCare employer web app (static, no build step)",
+  "scripts": { "start": "npx serve .", "dev": "npx serve ." }
+}

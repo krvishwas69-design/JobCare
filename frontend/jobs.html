@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00875a">
+  <meta name="description" content="Find local jobs and apply directly with Job Care.">
+  <title>Find Jobs | Job Care</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/jobs.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="jobs.html" aria-label="Job Care jobs home">Job<span>Care</span></a>
+    <a class="employer-link" href="index.html">Employer portal</a>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <p class="eyebrow">JOB CARE OPPORTUNITIES</p>
+      <h1>Find work that works for you.</h1>
+      <p>Explore active openings and apply directly to the employer.</p>
+      <form class="search" id="job-search-form">
+        <label class="sr-only" for="job-search">Search jobs or locations</label>
+        <input id="job-search" name="q" type="search" maxlength="100" placeholder="Job title, skill, or city">
+        <button type="submit">Search jobs</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="results-heading">
+      <div class="section-heading">
+        <h2 id="results-heading">Open positions</h2>
+        <p id="results-count" aria-live="polite"></p>
+      </div>
+      <p class="notice" id="jobs-message" role="status">Loading jobs…</p>
+      <div class="job-list" id="jobs-list"></div>
+    </section>
+
+    <section class="apply-panel" id="apply-panel" hidden aria-labelledby="apply-heading">
+      <button class="back-link" id="back-to-jobs" type="button">← Back to jobs</button>
+      <div id="application-form-wrap">
+        <h2 id="apply-heading">Apply for this job</h2>
+        <p class="selected-job" id="selected-job"></p>
+        <form id="application-form">
+          <div class="fields">
+            <label>Full name *
+              <input name="name" autocomplete="name" maxlength="200" required>
+            </label>
+            <label>Mobile number *
+              <input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" required>
+            </label>
+            <label>Current role
+              <input name="role" maxlength="200">
+            </label>
+            <label>City
+              <input name="city" autocomplete="address-level2" maxlength="100">
+            </label>
+            <label>Area
+              <input name="area" maxlength="100">
+            </label>
+            <label>Experience
+              <input name="experience" maxlength="50" placeholder="e.g. 2 years">
+            </label>
+            <label>Skills (comma separated)
+              <input name="skills" maxlength="500" placeholder="e.g. sales, customer service">
+            </label>
+          </div>
+          <label class="consent">
+            <input name="consent" type="checkbox" required>
+            <span>I agree that Job Care may share the details I submit with the employer for this job application.</span>
+          </label>
+          <p class="privacy-note">Your application details are used to process this application and are not added to the searchable candidate database through this form.</p>
+          <p class="form-message" id="application-message" role="status" aria-live="polite"></p>
+          <button class="submit-button" id="submit-application" type="submit">Submit application</button>
+        </form>
+      </div>
+      <div class="success-panel" id="application-success" hidden role="status">
+        <h2>Application submitted</h2>
+        <p>Your application has been sent to the employer.</p>
+        <button class="submit-button" id="continue-browsing" type="button">Continue browsing</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Job Care · Find your next opportunity</footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/jobs.js"></script>
+</body>
+</html>
